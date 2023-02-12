@@ -1,0 +1,333 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class fisheEatBobe : MonoBehaviour {
+	public Image symbolToDrawDisplay;
+	public TMPro.TextMeshProUGUI infoDisplay;
+	public float timeToCatch = 2;
+	public float timeLeft = 2;
+	public List<string> fisheSymbols;
+	public string rarityName;
+	public string fisheName;
+	public float frenzyBonus = 400;
+	public float frenzyDecay = 8;
+	public float frenzyTimeDecay = .0003f;
+	public float fisheLength = 10f;
+	[SerializeField]
+	public static float feedingFrenzy;
+
+	private TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+	private int rarity;
+	private int rollRange = 4096;
+	private bool amBite = false;
+	private bool catchSuccess;
+	private bool exitDrawMode = false;
+
+	public static List<int> fisheCount = new List<int>
+	{
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	};
+
+	//this is to make the empty list for everything the player has caught :)
+	public static List<List<Fishe>> caugghtFisheList = new List<List<Fishe>>
+	{
+		new List<Fishe>{
+
+		},
+		new List<Fishe>
+		{
+
+		},
+		new List<Fishe>
+		{
+
+		},
+		new List<Fishe>
+		{
+
+		},
+		new List<Fishe>
+		{
+
+		},
+		new List<Fishe>
+		{
+
+		}
+	};
+	public static List<List<string>> symbolPool = new List<List<string>>
+	{
+
+		//I am aware that this code does not work as intended. However, I have also become endeared to the way it dishes out symbols to draw <3
+		new List<string>{
+			"exclamation mark", "line", "caret", "v", "crescent", "loop"
+		},
+		new List<string>
+		{
+			"triangle"
+		},
+		new List<string>
+		{
+			"heart", "s", "z"
+		},
+		new List<string>
+		{
+			"pentagram"
+		},
+		new List<string>
+		{
+			"swoopy"
+		},
+		new List<string>
+		{
+			"z"
+		},
+		// new List<string>{
+		// 	"exclamation mark", "line", "caret", "v", "crescent", "loop","triangle","heart", "s", "z"
+		// },
+		// new List<string>
+		// {
+		// 	"exclamation mark", "line", "caret", "v", "crescent", "loop","triangle","heart", "s", "z"
+		// },
+		// new List<string>
+		// {
+		// 	"exclamation mark", "line", "caret", "v", "crescent", "loop","triangle","heart", "s", "z"
+		// },
+		// new List<string>
+		// {
+		// 	"exclamation mark", "line", "caret", "v", "crescent", "loop","triangle","heart", "s", "z"
+		// },
+		// new List<string>
+		// {
+		// 	"exclamation mark", "line", "caret", "v", "crescent", "loop","triangle","heart", "s", "z"
+		// },
+	};
+
+	//all fish species
+	public static List<List<string>> fishePool = new List<List<string>>
+	{
+		new List<string>{
+			"Palefish", "Silverside","Three Spot Gourami","Loweye Catfish","Yellow-Edged Moray","Armorhead Catfish","Slimehead","Salamanderfish","Dogfish Shark","Dwarf Loach","Cutlassfish","Footballfish","Coffinfish"
+		},
+		new List<string>
+		{
+			"Yelloweye Hooktail","Greateye Yellowgill","Backgill","Ruffled Nosefish","Angelfish","Fusilier fish","Kingfish","Salmon","Bigscale Pomfret","Red Snapper","Green Swordtail","Warmouth","Bullhead Shark","Crocodile Icefish"
+		},
+		new List<string>
+		{
+			"Cheffish","Rainfish","Falseface","Bonnetmouth","Knifefish","Tilefish","Pelican Gulper","Handfish","Rabbitfish","Cichlid","Snailfish","Slender Snipe Eel"
+		},
+		new List<string>
+		{
+			"Snowtail","Phillyfish","Boomerang Arowana","European Perch","Butterfish","Leatherjacket","American Sole","Megamouth Shark"
+		},
+		new List<string>
+		{
+			"Murray Cod","Candlefish","Elephant Fish","Bonefish"
+		},
+		new List<string>
+		{
+			"Madagascar Pochard","Sea Dragon","Dunkleosteus"
+		}
+	};
+
+	//how big each species of fish is
+	public static List<List<float>> fisheSizes = new List<List<float>>
+	{
+		new List<float>{
+			1, 2, 1, 2, 2, 4, 3, 1, 2, 1, 1, 1, 2
+		},
+		new List<float>
+		{
+			2, 3, 3, 2, 3, 3, 3, 4, 4, 4
+		},
+		new List<float>
+		{
+			4, 4, 4, 4, 2, 1, 1, 2, 2
+		},
+		new List<float>
+		{
+			2, 3, 3, 3, 4
+		},
+		new List<float>
+		{
+			2, 1, 4, 4
+		},
+		new List<float>
+		{
+			5, 5
+		}
+	};
+
+	// Start is called before the first frame update
+	void Start() {
+
+
+		//Get symbol draw prompt
+		symbolToDrawDisplay = GameObject.Find("symbolToDraw").GetComponent<Image>();
+		//set
+		setDrawImage();
+
+		//get time left display
+		infoDisplay = GameObject.Find("timeLeft").GetComponent<TMPro.TextMeshProUGUI>();
+
+		//Imagine a range of numbers, with subsets in that range to pick from. Each subset is equivalent to a rarity of fish. What this code does
+		//is take the player's current Frenzy bonus, cut that many numbers out of the bottom of the range, and then reassign all the remaining numbers
+		//in the range with a new rarity while maintaining proportions.
+		var RNG = Random.Range(1, rollRange);
+		RNG = Mathf.FloorToInt(((RNG * -feedingFrenzy) + (rollRange * RNG) + (rollRange * feedingFrenzy)) / rollRange);
+		rarity = RNG < 2756 ? 1 : RNG < 3674 ? 2 : RNG < 3980 ? 3 : RNG < 4082 ? 4 : RNG < 4096 ? 5 : 6;
+
+		//Assign the name of the fish's rarity tier for display purposes.
+		rarityName = rarity < 2 ? "Common" : rarity < 3 ? "Uncommon" : rarity < 4 ? "Rare" : rarity < 5 ? "Epic" : rarity < 6 ? "Legendary" : "Mythic";
+
+		//Select a random species of fish from the pool of rarity selected
+		RNG = Random.Range(0, fishePool[rarity - 1].Count);
+		fisheName = fishePool[rarity - 1][RNG];
+
+		//Select sub-species if applicable
+		if (fisheName == "Palefish") {
+			var fishSpecies = new List<string> { "Bulbnosed", "Heapmouth", "Slackjaw", "Spooljaw", "Stoutbrow", "Tallheaded" };
+			fisheName = fishSpecies[Random.Range(0, fishSpecies.Count)] + " Palefish";
+		}
+
+		//Get the size of the fish species selected
+		fisheLength = fisheSizes[rarity - 1][RNG];
+		var sizeVariance = Random.Range(.5f, 2f);
+
+		//populate array with gestures required to catch fish
+		for (int i = 0; i < rarity; i++) {
+			var symRarityPool = Random.Range(0, rarity - 1);
+			fisheSymbols.Add(symbolPool[symRarityPool][Random.Range(0, symbolPool[symRarityPool].Count - 1)]);
+		}
+
+		transform.parent.localScale *= 1 + fisheLength * .3f;
+		transform.parent.gameObject.GetComponentInChildren<Collider2D>().transform.localScale /= 1 + fisheLength * .3f;
+		transform.parent.gameObject.GetComponent<fisheMove>().speed -= fisheLength * .1f;
+		transform.parent.gameObject.GetComponent<fisheMove>().rotationSpeed -= fisheLength * .1f;
+
+
+		// I MADE A MISTAKE I'LL WRITE BETTER CODE IN THE FUTURE OKAY
+		foreach (List<Fishe> rarityTier in caugghtFisheList) {
+			foreach (Fishe fishe in rarityTier) {
+				fishe.name = textInfo.ToTitleCase(fishe.name.ToLower());
+			}
+		}
+	}
+
+	// Update is called once per frame
+	void Update() {
+		if (feedingFrenzy > 0) {
+			feedingFrenzy -= Time.deltaTime * frenzyDecay;
+			if (feedingFrenzy < 0) {
+				feedingFrenzy = 0;
+			}
+		}
+		if (amBite) {
+			setDrawImage();
+			timeLeft -= Time.deltaTime;
+			if (timeLeft <= 0) {
+				Camera.main.GetComponent<RecognizerScript>().GetSymbol();
+			} else {
+				infoDisplay.text = timeLeft.ToString();
+				if (Camera.main.GetComponent<RecognizerScript>().enabled && Camera.main.GetComponent<RecognizerScript>().type != null && (Input.GetMouseButtonUp(0) || !Input.GetMouseButton(0))) {
+					checkSymbol(false);
+				}
+			}
+		}
+
+	}
+
+	private void LateUpdate() {
+		if (timeLeft <= 0) {
+			checkSymbol(true);
+		}
+		if (exitDrawMode) {
+			fisheSymbols.Clear();
+			setDrawImage();
+			Camera.main.GetComponent<RecognizerScript>().enabled = false;
+			Camera.main.GetComponent<RecognizerScript>().type = null;
+			Camera.main.GetComponent<Collider2D>().enabled = false;
+			Destroy(transform.parent.gameObject);
+		}
+	}
+
+	private void checkSymbol(bool lastChance) {
+		if (Camera.main.GetComponent<RecognizerScript>().type == fisheSymbols[0]) {
+			fisheSymbols.RemoveAt(0);
+			Camera.main.GetComponent<RecognizerScript>().type = null;
+			timeLeft = timeToCatch - feedingFrenzy * frenzyTimeDecay;
+			curbDifficulty();
+
+			if (fisheSymbols.Count == 0) {
+				symbolToDrawDisplay.color = new Color(255, 255, 255, 255);
+				symbolToDrawDisplay.sprite = Resources.Load<Sprite>(fisheName.ToString());
+				infoDisplay.text = "Caught a" + (rarityName == "Epic" || rarityName == "Uncommon" ? "n" : "") + " " + rarityName + " " + textInfo.ToTitleCase(fisheName.ToLower()) + "!";
+				fisheCount[rarity - 1]++;
+				caugghtFisheList[rarity - 1].Add(new Fishe(fisheName, fisheLength));
+				feedingFrenzy += frenzyBonus;
+				exitDrawMode = true;
+			}
+		} else {
+			if (lastChance) {
+				feedingFrenzy = 0;
+				infoDisplay.text = "Failed to Catch the Fishe.";
+				Debug.Log(rarity);
+				exitDrawMode = true;
+			}
+			Camera.main.GetComponent<RecognizerScript>().type = null;
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.tag == "bobe" && !Camera.main.GetComponent<RecognizerScript>().enabled) {
+			Camera.main.GetComponent<RecognizerScript>().enabled = true;
+			Camera.main.GetComponent<RecognizerScript>().type = null;
+			Camera.main.GetComponent<Collider2D>().enabled = true;
+
+			timeLeft = timeToCatch;
+			curbDifficulty();
+
+			amBite = true;
+		}
+	}
+
+	[System.Serializable]
+	public class Fishe {
+		public string name;
+		public float length;
+		public Fishe(string name, float length) {
+			this.name = name;
+			this.length = length;
+		}
+	}
+
+	void clearText() {
+		infoDisplay.text = null;
+	}
+	void setDrawImage() {
+		if (fisheSymbols.Count != 0) {
+			symbolToDrawDisplay.enabled = true;
+			symbolToDrawDisplay.color = new Color(1, 0.9596126f, 0.4858491f, 1);
+			symbolToDrawDisplay.sprite = Resources.Load<Sprite>(fisheSymbols[0].ToString());
+		} else {
+			//symbolToDrawDisplay.enabled = false;
+		}
+	}
+
+	void curbDifficulty() {
+		if (fisheSymbols.Count != 0) {
+			if (fisheSymbols[0] == "heart" || fisheSymbols[0] == "pentagram" || fisheSymbols[0] == "swoopy") {
+				timeLeft += 1 - feedingFrenzy / (rollRange * 1.5f);
+			}
+		}
+	}
+}

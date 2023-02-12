@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "s">
+	<Stroke>
+		<Point X = "411" Y = "-708" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "exclamation mark">
+	<Stroke>
+		<Point X = "953" Y = "-683" T = "0" Pressure = "0" />
+		<Point X = "954" Y = "-674" T = "0" Pressure = "0" />
+		<Point X = "954" Y = "-653" T = "0" Pressure = "0" />
+		<Point X = "956" Y = "-639" T = "0" Pressure = "0" />
+		<Point X = "957" Y = "-584" T = "0" Pressure = "0" />
+		<Point X = "957" Y = "-570" T = "0" Pressure = "0" />
+		<Point X = "959" Y = "-539" T = "0" Pressure = "0" />
+		<Point X = "960" Y = "-516" T = "0" Pressure = "0" />
+		<Point X = "960" Y = "-495" T = "0" Pressure = "0" />
+		<Point X = "962" Y = "-474" T = "0" Pressure = "0" />
+		<Point X = "962" Y = "-461" T = "0" Pressure = "0" />
+		<Point X = "962" Y = "-456" T = "0" Pressure = "0" />
+		<Point X = "963" Y = "-447" T = "0" Pressure = "0" />
+		<Point X = "963" Y = "-437" T = "0" Pressure = "0" />
+		<Point X = "963" Y = "-431" T = "0" Pressure = "0" />
+		<Point X = "965" Y = "-425" T = "0" Pressure = "0" />
+		<Point X = "965" Y = "-423" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-422" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-420" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-419" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-416" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-414" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-413" T = "0" Pressure = "0" />
+		<Point X = "966" Y = "-410" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

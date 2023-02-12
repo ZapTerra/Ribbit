@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "exclamation mark">
+	<Stroke>
+		<Point X = "285" Y = "-497" T = "0" Pressure = "0" />
+		<Point X = "285" Y = "-486" T = "0" Pressure = "0" />
+		<Point X = "284" Y = "-479" T = "0" Pressure = "0" />
+		<Point X = "284" Y = "-468" T = "0" Pressure = "0" />
+		<Point X = "286" Y = "-436" T = "0" Pressure = "0" />
+		<Point X = "288" Y = "-409" T = "0" Pressure = "0" />
+		<Point X = "288" Y = "-384" T = "0" Pressure = "0" />
+		<Point X = "290" Y = "-365" T = "0" Pressure = "0" />
+		<Point X = "290" Y = "-358" T = "0" Pressure = "0" />
+		<Point X = "291" Y = "-358" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

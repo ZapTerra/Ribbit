@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "line">
+	<Stroke>
+		<Point X = "843" Y = "-539" T = "0" Pressure = "0" />
+		<Point X = "855" Y = "-539" T = "0" Pressure = "0" />
+		<Point X = "888" Y = "-536" T = "0" Pressure = "0" />
+		<Point X = "939" Y = "-530" T = "0" Pressure = "0" />
+		<Point X = "1016" Y = "-518" T = "0" Pressure = "0" />
+		<Point X = "1058" Y = "-512" T = "0" Pressure = "0" />
+		<Point X = "1074" Y = "-506" T = "0" Pressure = "0" />
+		<Point X = "1091" Y = "-503" T = "0" Pressure = "0" />
+		<Point X = "1098" Y = "-501" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>
