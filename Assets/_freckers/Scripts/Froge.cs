@@ -6,6 +6,7 @@ namespace Freckers
 {
 	public class Froge : MonoBehaviour
 	{
+		public Collider2D freckerBoardZoning;
 		public uint teamId = 0;
 		public Animator animator;
 		public GameObject crown;
@@ -66,14 +67,17 @@ namespace Freckers
 				}
 			}
 
-			transform.position = new Vector2(Mathf.Clamp(transform.position.x, -3.5f, 3.5f), Mathf.Clamp(transform.position.y, -3.5f, 3.5f));
+			//transform.position = new Vector2(Mathf.Clamp(transform.position.x, -3.5f, 3.5f), Mathf.Clamp(transform.position.y, -3.5f, 3.5f));
+			if(!freckerBoardZoning.OverlapPoint(transform.position)){
+				transform.position = freckerBoardZoning.ClosestPoint(transform.position);
+			}
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.CompareTag("frineldlyFroge") && jumpDist > 0)
 			{
-				if(collision.gameObject.GetComponent<SpriteRenderer>().color != GetComponent<SpriteRenderer>().color)
+				if(collision.gameObject.GetComponent<Froge>().teamId != GetComponent<Froge>().teamId)
 				{
 					FindObjectOfType<FreckersAudioTracks>().SwapRiff();
 					GameObject.Find("Screen Border Effects Camera").GetComponent<Camera>().enabled = true;
@@ -91,7 +95,6 @@ namespace Freckers
 
 		public void TheySetUsUpTheBombFreckers(){
 			GameManager.Instance.nextTurn();
-			frogeDetector.frogeCollideCount = 0;
 			GameObject deathExplosion = Instantiate(explosion);
 			deathExplosion.transform.position = transform.position;
 			Destroy(gameObject);

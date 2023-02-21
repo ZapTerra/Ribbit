@@ -50,6 +50,8 @@ public class CrocMove : MonoBehaviour {
 	void OnTriggerEnter(Collider otherObject) {
 		if (otherObject.gameObject.CompareTag("Player")) {
 			if (canJump == true) {
+				Debug.Log("Vibrate, croc lunge");
+				Vibration.VibratePeek();
 				animator.SetBool("Lunge", true);
 				distToGo = 2;
 				canJump = false;

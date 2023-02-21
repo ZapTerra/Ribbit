@@ -33,7 +33,7 @@ public class TritterGacha : MonoBehaviour
             new Tritter("morrisa", false, 3),
         },
         new List<Tritter> {
-            //new Tritter("boldus", false, 4),
+            new Tritter("boldus", false, 4),
             new Tritter("fueriios", false, 4),
             new Tritter("gongaldo", false, 4),
             new Tritter("haze", false, 4),

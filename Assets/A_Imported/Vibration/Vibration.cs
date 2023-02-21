@@ -205,7 +205,7 @@ public static class Vibration
     {
         if ( Application.isMobilePlatform ) {
             Debug.Log("ENABLE ME");
-            Handheld.Vibrate ();
+            //Handheld.Vibrate ();
         }
     }
 

@@ -10,8 +10,7 @@ namespace Freckers
 		public uint teamCount = 2;
 		public uint extraJumpCount = 1;
 		public bool extraMovesInProgress;
-
-		public Color[] teamColors;
+		
 		public uint currentTurn { get; private set; } = 0;
 
 		private void Start()
@@ -24,6 +23,7 @@ namespace Freckers
 		{
 			currentTurn = (currentTurn + 1) % teamCount;
 			extraMovesInProgress = false;
+			Debug.Log("Current turn: Team " + currentTurn);
 		}
 
 		public void extraJumpTime()
@@ -33,6 +33,7 @@ namespace Freckers
 
 		public bool IsMyTurn(Froge froge)
 		{
+			Debug.Log("Is my turn: " + (froge.teamId == currentTurn || froge.state == Froge.State.Jumping));
 			return froge.teamId == currentTurn || froge.state == Froge.State.Jumping;
 		}
 	}

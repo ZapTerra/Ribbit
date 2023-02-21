@@ -56,22 +56,6 @@ public class UIManager : MonoBehaviour {
 	InputField txt2;
 
 
-
-
-	//string m_PIN = "Please enter your PIN here.";
-	//string m_Tweet = "Please enter your tweet here.";
-	//byte[] bytes;
-
-	//[DllImport("__Internal")]
-	//private static extern void DownloadFile(byte[] array, int byteLength, string fileName);
-
-	//[DllImport("__Internal")]
-	//private static extern void openWindow(string url);
-
-	//[DllImport("__Internal")]
-	//private static extern void PasteHereWindow(string gettext);
-
-
 	void Start() {
 		rt = GetComponent<Transform>();
 		home2 = rt.position + Vector3.up;

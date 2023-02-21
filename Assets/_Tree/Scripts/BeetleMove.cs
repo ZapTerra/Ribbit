@@ -156,6 +156,8 @@ public class BeetleMove : MonoBehaviour {
 
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (shadow.GetComponent<Collider>().Raycast(ray, out hit, 100f)) {
+			Debug.Log("Vibrate, tritter placed");
+			Vibration.VibratePop();
 			shadow.SetActive(false);
 			transform.parent = rotationParent;
 			transform.localRotation = Quaternion.identity;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Freckers {
 	public class MoveClickPoints : MonoBehaviour {
+		public Collider2D freckerBoardZoning;
 		public GameObject targetFroge;
 		public GameObject dragGraphic1;
 		public GameObject dragGraphic2;
@@ -39,12 +40,19 @@ namespace Freckers {
 
 			cameraPos = gameCamera.transform.position;
 			if (Input.GetMouseButtonDown(0)) {
-				Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-				Froge froge = hit?.GetComponent<Froge>();
+				Collider2D[] hits = Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+				Froge froge = null;
+				foreach(Collider2D hit in hits){
+					froge = hit?.GetComponent<Froge>();
+					if(froge != null){
+						break;
+					}
+				}
+				//Yes, this is messy. No, I do not care enough to clean it up and make sure there aren't bugs.
 				if (froge != null) {
 					if (froge.state != Froge.State.Jumping && GameManager.Instance.IsMyTurn(froge) && !GameManager.Instance.extraMovesInProgress || froge.jumpAgainCount > 0) {
 						cameraPositionSave = cameraPos;
-						targetFroge = hit.gameObject;
+						targetFroge = froge.gameObject;
 						targetFrogePosition = targetFroge.transform.position;
 						Debug.Log(targetFroge.GetComponent<Froge>().king);
 						maxDragAngle = targetFroge.GetComponent<Froge>().king ? 180 : 45;
@@ -80,10 +88,20 @@ namespace Freckers {
 
 
 				fPos = (targetFrogePosition * Vector2.one - moveDir);
-				frogeDetector.transform.position = new Vector2(Mathf.Clamp(fPos.x, -3.5f, 3.5f), fPos.y);
+				//frogeDetector.transform.position = new Vector2(Mathf.Clamp(fPos.x, -3.5f, 3.5f), fPos.y);
+				if(freckerBoardZoning.OverlapPoint(fPos)){
+					frogeDetector.transform.position = fPos;
+				}else{
+					frogeDetector.transform.position = freckerBoardZoning.ClosestPoint(fPos);
+				}
 
 				fPos -= moveDir * (frogeDetector.GetComponent<frogeDetector>().IsOnDifferentFrog ? 1 : 0);
-				dragGraphicF.transform.position = new Vector2(Mathf.Clamp(fPos.x, -3.5f, 3.5f), Mathf.Clamp(fPos.y, -3.5f, 3.5f));
+				//dragGraphicF.transform.position = new Vector2(Mathf.Clamp(fPos.x, -3.5f, 3.5f), Mathf.Clamp(fPos.y, -3.5f, 3.5f));
+				if(freckerBoardZoning.OverlapPoint(fPos)){
+					dragGraphicF.transform.position = fPos;
+				}else{
+					dragGraphicF.transform.position = freckerBoardZoning.ClosestPoint(fPos);
+				}
 
 				//move camera dynamically
 				var cameraTarget = (targetFrogePosition * Vector2.one - moveDir);

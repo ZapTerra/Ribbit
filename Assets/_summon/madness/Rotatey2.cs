@@ -32,6 +32,8 @@ public class Rotatey2 : MonoBehaviour {
 			if(!havePlayedHitEffect)
 			{
 				hitEffect.Play();
+				Debug.Log("Vibrate, star hit");
+				Vibration.VibratePop();
 				havePlayedHitEffect = true;
 			}
 		}

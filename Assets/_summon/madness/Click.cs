@@ -110,7 +110,6 @@ public class Click : MonoBehaviour {
 			if (timer3 > 2f) {
 				growsphere.transform.localScale *= 1.05f;
 				timer3 = -1;
-
 			}
 		}
 	}

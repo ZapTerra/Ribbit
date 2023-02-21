@@ -22,6 +22,10 @@ public class logeWobble : MonoBehaviour {
 			timeOnLoge -= Time.deltaTime;
 			if (timeOnLoge <= startOnSecondsLeft) {
 				transform.eulerAngles = Vector3.forward * Mathf.Sin((timeOnLoge - startOnSecondsLeft) * rotationSpeed) * rotationMagnitude;
+				if(!animator.GetBool("IsSinking")){
+					Debug.Log("Vibrate, loge wobble");
+					Vibration.VibratePop();
+				}
 				animator.SetBool("IsSinking", true);
 			}
 			if (timeOnLoge <= 0) {

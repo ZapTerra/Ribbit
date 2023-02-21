@@ -6,34 +6,22 @@ namespace Freckers
 {
 	public class frogeDetector : MonoBehaviour
 	{
-		public MoveClickPoints moveClickPoints;
-		public bool IsOnDifferentFrog { get { return frogeCollideCount > 0; } }
-		public static int frogeCollideCount = 0;
-
-		private void OnTriggerEnter2D(Collider2D collision)
-		{
-			Froge froge = collision.gameObject.GetComponent<Froge>();
-			if (froge == null) {
-				return;
-			}
-
-			if (!GameManager.Instance.IsMyTurn(froge))
-			{
-				frogeCollideCount++;
-			}
-		}
-
-		private void OnTriggerExit2D(Collider2D collision)
-		{
-			Froge froge = collision.gameObject.GetComponent<Froge>();
-			if (froge == null)
-			{
-				return;
-			}
-
-			if (!GameManager.Instance.IsMyTurn(froge))
-			{
-				frogeCollideCount--;
+		public bool IsOnDifferentFrog {
+			get { 
+				int frogeCollideCount = 0;
+				List<Collider2D> overlaps = new List<Collider2D>();
+				GetComponent<Collider2D>().OverlapCollider(new ContactFilter2D().NoFilter(), overlaps);
+				foreach(Collider2D check in overlaps){
+					Froge froge = check.gameObject.GetComponent<Froge>();
+					if (froge == null) {
+						continue;
+					}
+					if (!GameManager.Instance.IsMyTurn(froge))
+					{
+						frogeCollideCount++;
+					}
+				}
+				return  frogeCollideCount > 0; 
 			}
 		}
 	}

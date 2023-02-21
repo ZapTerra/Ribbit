@@ -4232,12 +4232,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "LEAD EXECUTIVE GAME DESIGNER\nNaomi Hall\n\nAaron Record -\nFreckers Riff
-    #1\nFrog Fishin'\ncoding help i guess (all of it)\njaundice emperor\n\nMusic
+  m_text: "LEAD EXECUTIVE GAME DESIGNER\nNaomi Hall\n\nScripting -\nChristian Hall\n\nImplementation
+    -\nChristian Hall\n\nQuaternions -\nChristian Hall\n\nArt Direction -\nChristian
+    Hall\n\nArt Design -\nChristian Hall\n\nUI -\nChristian Hall\n\nFX -\nChristian
+    Hall\n\nQA -\nChristian Hall\n\nAaron Record -\ncoding help i guess (all of it)\nking
+    in yellow\nSongs -\nFreckers Riff #1\nFreckers Riff #3\nFrog Fishin'\n\nMusic
     Director -\nCoypus \nSongs -\nFreckers Riff #2\nHoppin' Logs\nHome Menu (Crossroads)\nSummoning
     (A Hopeful Ritual)\nSummon Sfx\n\nPapa Snow\nFreckers Riff #1 electric guitar\n\nSebastian
-    Guadarrama-\nFreckers Riff #2 electric guitar\n\na bunch of sound from Zapsplat
-    I legally have to have this here\n\nJason Wild - the water\nCC\nhttps://opengameart.org/content/animated-ocean-water-tile\n\nDunkleosteus,
+    Guadarrama-\nFreckers Riff #2 electric guitar\nFreckers Riff #3 electric guitar\n\na
+    bunch of sound from Zapsplat I legally have to have this here\n\nJason Wild -
+    the water\nCC\nhttps://opengameart.org/content/animated-ocean-water-tile\n\nDunkleosteus,
     rotated - CC 4.0\nhttps://commons.wikimedia.org/wiki/File:202010_Dunkleosteus_telleri.png\n\nSea
     Dragon, removed background, rotated - CC 2.0\nhttps://en.wikipedia.org/wiki/Glaucus_atlanticus#/media/File:Glaucus_atlanticus_1_cropped.jpg\n\nPhoebe
     (3 years old) -\nlead home button designer\n\nbubble wand games-\nsummoning scene
@@ -4248,12 +4252,10 @@ MonoBehaviour:
     Clark\nGrace Haraguchi\nAndy Richardson\nNathan Dodd\nDaniel Squire\nJoely Fritsch\nEden
     Record\nAdam Drinkwater\nDaniel Sencion\nAbram Greenfield\nBeethoven\nDouglas
     Wreden\nBart Bonte\nDunkey\nThe School IT Guy (For Being Bad At Blocking This
-    Game)\n\nMom\nDad\n\nGoGo\nP.\nZector\nTroia\nLord Smadee\nInlajin\nSock\nMagicant\nJYankee\n\nGibby
-    Himself (I miss you, RIP, honk)\n\nunspecial thanks-\ngoogle - encouragement
-    of immoral design principles\nbubble wand games - spaghetti code\n\n\nScripting
-    -\nChristian Hall\n\nImplementation -\nChristian Hall\n\nQuaternions -\nChristian
-    Hall\n\nArt Direction -\nChristian Hall\n\nArt Design -\nChristian Hall\n\nUI
-    -\nChristian Hall\n\nFX -\nChristian Hall\n\nQA -\nChristian Hall\n"
+    Game)\n\nMom\nDad\n\nGoGo\nP.\nKai (Supreme East Impersonator)\nZector\nTroia\nLord
+    Smadee\nInlajin\nSock\nMagicant\nJYankee\n\nGibby Himself (I miss you, RIP, honk)\n\nunspecial
+    thanks-\ngoogle - encouragement of immoral design principles\nbubble wand games
+    - spaghetti code"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

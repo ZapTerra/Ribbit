@@ -48,6 +48,8 @@ public class ShroomBehaviour : MonoBehaviour
 	{
 		if (otherObject.gameObject.CompareTag("Player") && hasBeenPickedUp == false)
 		{
+			Debug.Log("Vibrate, shroom pickup");
+			Vibration.VibratePop();
 			PlayerMoney.MONEY++;
 			PlayerMoney.saveMoney();
 			hasBeenPickedUp = true;

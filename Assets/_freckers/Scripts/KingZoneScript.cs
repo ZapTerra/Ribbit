@@ -16,7 +16,7 @@ namespace Freckers
                 return;
             }
 
-            if (froge.teamId == teamId) {
+            if (froge.teamId != teamId) {
                 froge.king = true;
                 froge.crown.SetActive(true);
             }
