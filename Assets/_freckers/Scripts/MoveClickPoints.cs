@@ -75,7 +75,7 @@ namespace Freckers {
 			if (canHasCastOnRelease) {
 				clickPos2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				dragRotation = -targetFroge.transform.up;
-				moveDir = ClampMagnitudeSquare((clickPos2 - clickPos1), maxMoveDistance);
+				moveDir = ClampMagnitudeSquare((clickPos2 - clickPos1), maxMoveDistance, targetFroge.transform.eulerAngles.z);
 
 				if (Vector3.Angle(dragRotation, moveDir) > maxDragAngle) {
 					// Clamp rotation to max in direction of mouse around a circle.
@@ -136,6 +136,10 @@ namespace Freckers {
 
 			if (!Input.GetMouseButton(0)) {
 				if (canHasCastOnRelease && clickDistanceForCast > distToNoticeCast && !dragGraphicF.GetComponent<moveCheck>().isOnDifferentFrog) {
+					Debug.Log("The game starts and the buttons are padlocked from here");
+					if(!GameManager.Instance.gameHasBegun){
+						GameManager.Instance.StartGame();
+					}
 					targetFroge.GetComponent<Froge>().jumpDist = clickDistanceForCast * (frogeDetector.GetComponent<frogeDetector>().IsOnDifferentFrog ? 2 : 1);
 					targetFroge.transform.up = -moveDir.normalized;
 				} else if (clickDistanceForCast < distToNoticeCast) {
@@ -146,20 +150,34 @@ namespace Freckers {
 			}
 		}
 
-		Vector2 ClampMagnitudeSquare(Vector2 vector, float squareLength) {
-			if (Mathf.Abs(vector.x) < squareLength && Mathf.Abs(vector.y) < squareLength) {
+		Vector2 ClampMagnitudeSquare(Vector2 vector, float squareLength, float heading) {
+			// Rotate the input vector by the frog's heading (rotation)
+			Vector2 clampVector = Rotate(vector, -heading * Mathf.Deg2Rad);
+
+			if (Mathf.Abs(clampVector.x) < squareLength && Mathf.Abs(clampVector.y) < squareLength) {
+				// If the rotated vector is within the square, return it as is
 				return vector;
 			}
 
-			if (Mathf.Abs(vector.x) > Mathf.Abs(vector.y)) {
-				vector.y = (Mathf.Abs(vector.y) / Mathf.Abs(vector.x)) * Mathf.Sign(vector.y) * squareLength;
-				vector.x = squareLength * Mathf.Sign(vector.x);
+			if (Mathf.Abs(clampVector.x) > Mathf.Abs(clampVector.y)) {
+				clampVector.y = (Mathf.Abs(clampVector.y) / Mathf.Abs(clampVector.x)) * Mathf.Sign(clampVector.y) * squareLength;
+				clampVector.x = squareLength * Mathf.Sign(clampVector.x);
 			} else {
-				vector.x = (Mathf.Abs(vector.x) / Mathf.Abs(vector.y)) * Mathf.Sign(vector.x) * squareLength;
-				vector.y = squareLength * Mathf.Sign(vector.y);
+				clampVector.x = (Mathf.Abs(clampVector.x) / Mathf.Abs(clampVector.y)) * Mathf.Sign(clampVector.x) * squareLength;
+				clampVector.y = squareLength * Mathf.Sign(clampVector.y);
 			}
 
-			return vector;
+			// Rotate the vector back to the world space
+			clampVector = Rotate(clampVector, heading * Mathf.Deg2Rad);
+
+			return clampVector;
+		}
+
+		private Vector2 Rotate(Vector2 v, float delta) {
+			return new Vector2(
+				v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+				v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+			);
 		}
 	}
 }

@@ -31,9 +31,12 @@ public class FrogeMove : MonoBehaviour {
 	void Update() {
 
 		if (Time.timeScale == 1 && doReset) {
-			Debug.Log("Resetting because timescale is 1, flagging scene as no longer transitioning.");
-			LoadScenes.sceneIsTransitioning = false;
-			SceneManager.LoadScene("River", LoadSceneMode.Single);
+			if(!LoadScenes.sceneIsTransitioning){
+				Debug.Log("Resetting because timescale is 1, flagging scene as no longer transitioning.");
+				SceneManager.LoadScene("River", LoadSceneMode.Single);
+			}else{
+				Debug.Log("Scene not transitioned because the home scene is being loaded");
+			}
 		} else if (Time.timeScale != 1 && !loggedReasonForNoReset) {
 			loggedReasonForNoReset = true;
 			Debug.Log("Initially not resetting because timescale is " + Time.timeScale);
@@ -111,7 +114,6 @@ public class FrogeMove : MonoBehaviour {
 	
 	private IEnumerator WaitReset(float time) {
 		Debug.Log("Flagging scene as transitioning.");
-		LoadScenes.sceneIsTransitioning = true;
 		Debug.Log("Waiting");
 		yield return new WaitForSeconds(time);
 		Reset();

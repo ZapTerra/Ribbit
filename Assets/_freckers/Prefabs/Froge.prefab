@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 2850623814819931641}
   - component: {fileID: -7467035112870598521}
   - component: {fileID: 3189863274782884461}
+  - component: {fileID: 7194666920194075983}
   m_Layer: 0
   m_Name: Froge
   m_TagString: frineldlyFroge
@@ -593,6 +594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f329ac8e4582a894cad320dccc510368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freckerBoardZoning: {fileID: 0}
   teamId: 0
   animator: {fileID: 0}
   crown: {fileID: 431338470878002722}
@@ -662,6 +664,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7194666920194075983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850623814819931141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fed8f9cae545c458a583f4d4d8c469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flamesColor: {r: 0, g: 0, b: 0, a: 0}
+  helixColor: {r: 0, g: 0, b: 0, a: 0}
+  sparksColor: {r: 0, g: 0, b: 0, a: 0}
+  flames: {fileID: 31443150819201658}
+  helix1: {fileID: 30816401076187154}
+  helix2: {fileID: 31407066160444032}
+  helix3: {fileID: 30412914540589140}
+  helix4: {fileID: 30707408483757890}
+  sparks: {fileID: 30522764434968268}
 --- !u!1 &3415779910896626035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1974,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+--- !u!198 &30412914540589140 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198718644786416934, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &30522764434968268 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198582406076101566, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &30707408483757890 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198415489504825904, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &30816401076187154 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198310897626484064, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &31407066160444032 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198832800350425074, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &31443150819201658 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198796712453205768, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}
+  m_PrefabInstance: {fileID: 193076370253512050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &190055625092206984 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4159976647224570, guid: b0bc1b6b391734647b9bb142bafc0819, type: 3}

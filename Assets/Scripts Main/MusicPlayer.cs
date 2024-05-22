@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MusicPlayer : MonoBehaviour {
 
 	public static MusicPlayer Instance { get; private set; }
+	public List<GameObject> dontDestroyTheseOnLoad;
 	private string sceneMusicIsFor;
 
 	void OnEnable() {
@@ -16,6 +18,9 @@ public class MusicPlayer : MonoBehaviour {
 	}
 	private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
 		if (SceneManager.GetActiveScene().name != sceneMusicIsFor) {
+			foreach(GameObject g in dontDestroyTheseOnLoad){
+				g.transform.parent = null;
+			}
 			Instance = null;
 			Destroy(gameObject);
 		}

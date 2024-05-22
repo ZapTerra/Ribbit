@@ -1001,6 +1001,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fb17351fcdbc5e34fa2108fe891ae951, type: 3}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
@@ -1009,12 +1013,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 853846765}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DoSceneTransition
       objectReference: {fileID: 0}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScenes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7160118820786625869, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_Pivot.x
@@ -1112,7 +1128,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+    - {fileID: 3073800915832723049, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
 --- !u!1 &235428503 stripped
 GameObject:
@@ -1577,6 +1595,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
@@ -1585,12 +1607,52 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 853846765}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DoSceneTransition
       objectReference: {fileID: 0}
     - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScenes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: SummonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4898488919947763836, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: holdTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 853846765}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoSceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScenes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SummonScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7160118820786625869, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
       propertyPath: m_Pivot.x
@@ -1688,7 +1750,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6032315587141915673, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
+    - {fileID: 3073800915832723049, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 297d01c52df5fdf4faaae65c5d4817c6, type: 3}
 --- !u!114 &853846765 stripped
 MonoBehaviour:
@@ -1917,6 +1981,30 @@ PrefabInstance:
     - target: {fileID: 414856497681860308, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DoSceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 853846765}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoSceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LoadScenes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Home
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552659271921840817, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3228375438510308815, guid: 7ff8557c67f43554fa50d35226606232, type: 3}
       propertyPath: m_AnchoredPosition.x

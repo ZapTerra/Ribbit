@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using UnityEditor.Build;
 using UnityEngine;
 
 public class TreeScroll : MonoBehaviour {
@@ -14,6 +15,7 @@ public class TreeScroll : MonoBehaviour {
 	public float groundAngleStart = -30;
 	public float groundAngleEnd = -40;
 	public float groundAngleAmount = 45;
+	public TMPro.TextMeshProUGUI nameDisplay;
 	public Transform cameraParentLad;
 	private Vector3 initState;
 	private Vector3 SwipePos;
@@ -27,7 +29,8 @@ public class TreeScroll : MonoBehaviour {
 	private int scrollMomentumKeyframe = 0;
 	// Start is called before the first frame update
 	void Start() {
-
+		nameDisplay.text = "";
+		Debug.Log("Build problems? Maybe try uncommenting header");
 	}
 
 	void Update() {
@@ -82,6 +85,7 @@ public class TreeScroll : MonoBehaviour {
 			cameraVertMomentum = Input.mousePosition.y < Screen.height * .2f ? -camVertSpeed * 2.5f : Input.mousePosition.y > Screen.height * .8f ? camVertSpeed * 2.5f : 0;
 			cameraVertMomentum *= Input.mousePosition.y < Screen.height * .1f || Input.mousePosition.y > Screen.height * .9f ? 4 : 1;
 			cameraVertMomentum *= Input.mousePosition.y < Screen.height * .05f || Input.mousePosition.y > Screen.height * .95f ? 4 : 1;
+			Debug.Log("SPIN");
 		}
 
 		cameraParentLad.eulerAngles = new Vector3(cameraParentLad.eulerAngles.x, cameraParentLad.eulerAngles.y - cameraRotationMomentum, cameraParentLad.eulerAngles.z);
@@ -97,5 +101,13 @@ public class TreeScroll : MonoBehaviour {
 				grandchild.gameObject.layer = LayerMask.NameToLayer(layer);
 		treeBody.layer = LayerMask.NameToLayer(layer);
 		terrain.layer = LayerMask.NameToLayer(layer);
+	}
+
+	public void DisplayName(string name){
+		nameDisplay.text = "~ " + name + " ~";
+	}
+
+	public void StopDisplayingName(){
+		nameDisplay.text = "";
 	}
 }

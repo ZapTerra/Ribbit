@@ -20,6 +20,7 @@ public class LoadScenes : MonoBehaviour {
 	}
 
 	public void DoSceneTransition(string scene) {
+		Debug.Log("Loading scene : \"" + scene + "\"");
 		if(!sceneIsTransitioning){
 			sceneIsTransitioning = true;
 			StartCoroutine(AnimateTransition(scene));

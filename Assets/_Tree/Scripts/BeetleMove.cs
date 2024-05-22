@@ -135,24 +135,27 @@ public class BeetleMove : MonoBehaviour {
 		shadow.SetActive(true);
 		transform.parent = Camera.main.gameObject.transform;
 		Camera.main.GetComponent<TreeScroll>().holdingBeetle = true;
+		Camera.main.GetComponent<TreeScroll>().DisplayName(tritterData.species);
 
 		Ray ray;
 		RaycastHit hit;
 		while (Input.GetMouseButton(0)) {
-			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			if (pickupPlane.GetComponent<Collider>().Raycast(ray, out hit, 100f)) {
-				transform.position = ray.GetPoint(hit.distance);
-				transform.rotation = transform.parent.rotation;
-			}
+			yield return null;
 			rotationParent.eulerAngles = new Vector3(rotationParent.eulerAngles.x, transform.parent.eulerAngles.y, rotationParent.eulerAngles.z);
 			rotationParent.position = new Vector3(rotationParent.position.x, transform.parent.position.y - ((transform.parent.eulerAngles.x / transform.parent.gameObject.GetComponent<TreeScroll>().groundAngleAmount)) * ((treeHeight - transform.localScale.y / 2) + transform.parent.gameObject.GetComponent<TreeScroll>().minVertCoord), rotationParent.position.z);
 			//The minimum vertical coordinate for the camera is added instead of subtracted becasue [sic] it is expected to be negative
-			yield return null;
+			ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			if (pickupPlane.GetComponent<Collider>().Raycast(ray, out hit, 100f)) {
+				transform.position = hit.point;
+				Debug.Log(hit.distance);
+				transform.rotation = transform.parent.rotation;
+			}
 		}
 
 		someoneIsHold = false;
 
 		Camera.main.GetComponent<TreeScroll>().holdingBeetle = false;
+		Camera.main.GetComponent<TreeScroll>().StopDisplayingName();
 
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (shadow.GetComponent<Collider>().Raycast(ray, out hit, 100f)) {

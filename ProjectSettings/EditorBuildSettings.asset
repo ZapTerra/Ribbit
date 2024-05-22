@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Pokkit/Scene/Bath.unity
     guid: 1b67044c5776ca64e8838fb0313e1025
+  - enabled: 1
+    path: Assets/_freckers/Scenes/Threckers.unity
+    guid: 445bc9ff2d471094c9cdb14de6f69b21
   m_configObjects: {}

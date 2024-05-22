@@ -17,6 +17,7 @@ namespace Freckers
 		public int jumpAgainCount = 0;
 		public bool king = false;
 		public GameObject explosion;
+		private bool deadByFailedJumpExplosion = false;
 
 		private float bobeTravel;
 		private float defaultRotation;
@@ -35,6 +36,7 @@ namespace Freckers
 			state = State.Waiting;
 			animator.SetBool("Jumping", false);
 			defaultRotation = transform.eulerAngles.z;
+			GameManager.Instance.RegisterFrog(teamId);
 		}
 
 		// Update is called once per frame
@@ -94,12 +96,19 @@ namespace Freckers
 		}
 
 		public void TheySetUsUpTheBombFreckers(){
-			GameManager.Instance.nextTurn();
+			deadByFailedJumpExplosion = true;
 			GameObject deathExplosion = Instantiate(explosion);
 			deathExplosion.transform.position = transform.position;
 			Destroy(gameObject);
 			FindObjectOfType<FreckersAudioTracks>().SwapClassical();
 			GameObject.Find("Screen Border Effects Camera").GetComponent<Camera>().enabled = false;
+		}
+
+		private void OnDestroy() {
+			GameManager.Instance.AManIsDead(teamId);
+			if(deadByFailedJumpExplosion){
+				GameManager.Instance.nextTurn();
+			}
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace Freckers
 {
     public class KingZoneScript : MonoBehaviour
     {
-        public uint teamId;
+        public List<uint> excludeTeams;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -16,7 +16,7 @@ namespace Freckers
                 return;
             }
 
-            if (froge.teamId != teamId) {
+            if (!excludeTeams.Contains(froge.teamId)) {
                 froge.king = true;
                 froge.crown.SetActive(true);
             }

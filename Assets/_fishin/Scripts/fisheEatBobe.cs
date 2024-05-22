@@ -333,7 +333,7 @@ public class fisheEatBobe : MonoBehaviour {
 				//Yes, I know this is long. Too bad! ;)
 				newDisplay.GetComponent<DiegeticFishCatchDisplay>().fishInfo.text = "Caught a" + (rarityName == "Epic" || rarityName == "Uncommon" ? "n" : "") + " " + rarityName + " " + textInfo.ToTitleCase(fisheName.ToLower()) + "!";
 				//infoDisplay.text = "";
-				PlayerMoney.MONEY += rarity;
+				PlayerMoney.MONEY += 1;
 				PlayerMoney.saveMoney();
 				rarityOfLastCaughtFish = rarity;
 				adCounter++;
@@ -345,7 +345,8 @@ public class fisheEatBobe : MonoBehaviour {
 			}
 		} else {
 			if (lastChance) {
-				feedingFrenzy = 0;
+				feedingFrenzy -= 2000;
+				feedingFrenzy = Mathf.Clamp(feedingFrenzy, 0, Mathf.Infinity);
 				infoDisplay.text = "Failed to Catch the Fishe.";
 				//I do not like this line.
 				FishingCoroutines.instance.StartCoroutine(FishingCoroutines.instance.ClearTextOnDelay(infoDisplay, 1f));
