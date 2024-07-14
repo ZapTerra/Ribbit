@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "caret">
+	<Stroke>
+		<Point X = "230" Y = "-356" T = "0" Pressure = "0" />
+		<Point X = "230" Y = "-363" T = "0" Pressure = "0" />
+		<Point X = "231" Y = "-383" T = "0" Pressure = "0" />
+		<Point X = "236" Y = "-416" T = "0" Pressure = "0" />
+		<Point X = "247" Y = "-453" T = "0" Pressure = "0" />
+		<Point X = "261" Y = "-483" T = "0" Pressure = "0" />
+		<Point X = "272" Y = "-502" T = "0" Pressure = "0" />
+		<Point X = "280" Y = "-512" T = "0" Pressure = "0" />
+		<Point X = "281" Y = "-515" T = "0" Pressure = "0" />
+		<Point X = "282" Y = "-507" T = "0" Pressure = "0" />
+		<Point X = "284" Y = "-481" T = "0" Pressure = "0" />
+		<Point X = "289" Y = "-438" T = "0" Pressure = "0" />
+		<Point X = "296" Y = "-398" T = "0" Pressure = "0" />
+		<Point X = "301" Y = "-371" T = "0" Pressure = "0" />
+		<Point X = "305" Y = "-359" T = "0" Pressure = "0" />
+		<Point X = "306" Y = "-357" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>

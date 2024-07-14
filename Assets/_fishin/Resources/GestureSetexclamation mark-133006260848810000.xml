@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name = "exclamation mark">
+	<Stroke>
+		<Point X = "420" Y = "-672" T = "0" Pressure = "0" />
+	</Stroke>
+</Gesture>
